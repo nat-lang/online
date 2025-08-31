@@ -1,0 +1,33 @@
+use prelude
+
+// the domain of individuals.
+sym Kilroy, Kiljoy;
+dom e = {Kilroy, Kiljoy};
+
+// the type of assignments.
+let a = num -> e;
+
+let AssSensitiveFunctionApplication
+  = (a: a -> x -> y, b: a -> x) => (g => a(g)(b(g)))
+  | (a: a -> x, b: a -> x -> y) => (g => b(g)(a(g)));
+
+let PredicateAbstraction 
+  = (n: num, f: a -> u) => (g x => f(g[n] = x))
+  | (f: a -> u, n: num) => (g x => f(g[n] = x));
+
+grammar.addRules(AssSensitiveFunctionApplication, PredicateAbstraction);
+
+// define some predicates and lexical entries.
+let pronoun: num -> (num -> e) -> e = n g => g[n];
+
+let Left = {Kilroy, Kiljoy};
+let left: a -> e -> t = g x => x in Left;
+
+let he = pronoun;
+let trace = pronoun;
+
+let everyone: a -> (e -> t) -> t = g p => for all (x in e) p(x); 
+
+// put it all together.
+ex [he(1) left];
+ex [everyone [1 [trace(1) left]]];

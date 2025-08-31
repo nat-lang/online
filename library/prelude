@@ -1,0 +1,28 @@
+
+// Define the boolean domain.
+dom t = {true, false};
+
+// Let the compiler know that the native
+// boolean type [bool] now has an extension.
+bool = t;
+
+// Define the [grammar] object, which will keep
+// track of our composition rules and lexical entries.
+let grammar = CompositionSystem();
+
+// Define some basic composition rules.
+
+// The grammar will know to apply this rule to binary branching 
+// children because it is a binary function. The pipe syntax '|'
+// is used to define type driven functions.
+let FunctionApplication = (a: x -> y, b: x) => a(b) | (a: x, b: x -> y) => b(a);
+
+grammar.addRules(FunctionApplication);
+
+let output = [];
+
+let prefix ex = output.push . StandaloneTexDoc . (x => x.tex()) . grammar.evaluate;
+
+let main = () => Generator(
+  output, serialize
+);

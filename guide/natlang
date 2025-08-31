@@ -1,0 +1,242 @@
+use .common
+
+anchor(
+  "functions",
+  tex"\color{black}\textbf{1. Functions}"
+);
+
+typeset tex"
+  Nat is a simple language, consisting of functions and the things
+  that functions act on. To define a function, introduce a variable and then
+  do something with it after a fat arrow.
+";
+
+codeblock "let f = x => x + 1;";
+
+typeset tex"Apply the function to an
+  argument with parentheses and print the result with the \codefont{print} function.
+";
+
+codeblock "print f(1);";
+
+typeset tex"Functions can have any number of parameters. Wrapping $n$ parameters in
+parentheses and separating them with commas produces an $n$-ary function.";
+
+codeblock "let f = (x, y, z) => x + y - z;
+
+print f(1, 2, 3); ";
+
+typeset tex"Omitting the parentheses and commas produces a curried function.";
+
+codeblock "let f = x y z => x + y - z;
+
+print f(1)(2)(3); ";
+
+typeset tex"Affixing a parameter with a `$*$' produces a variadic function. Within the scope
+of the function, the parameter will be a sequence. We'll see sequences in more detail later.";
+
+codeblock "let f = (*x) => x.reduce(+, 0);
+
+print f(1);
+print f(1, 2);
+print f(1, 2, 3); ";
+
+typeset tex"Functions can have zero parameters.";
+
+codeblock "let f = () => 1;
+
+print f();";
+
+typeset tex"Functions can be partial. To define a partial function, use a value for a
+parameter. The function will be undefined at any other value.";
+
+codeblock "let f = 1 => 2;
+
+print f(1);
+print f(2); ";
+
+typeset tex"Match multiple values by separating parameter image pairs with a $|$.";
+
+codeblock "let f = 1 => 2 | 2 => 3;
+
+print f(1);
+print f(2);
+print f(3); ";
+
+typeset tex"You can match specific values when defining total functions as well, by
+supplying a final catchall parameter, which is just a normal bound variable.";
+
+codeblock "let f = 1 => 2 | x => x * 2;
+
+print f(1);
+print f(2);";
+
+typeset tex"Functions can be anonymous, and they can be the arguments of other functions.
+Here we pass two anonymous functions to the built in composition function.";
+
+codeblock "let f = (x => x + 1) . (x => x - 1);
+
+print f(1);
+print f(2); ";
+
+typeset tex"While the default syntax for applying a function is with parentheses, it's also
+possible to define prefix functions, which apply to arguments that they immediately precede.
+Prefix functions must be unary.";
+
+codeblock "let prefix f = x => x + 1;
+
+print f 1;";
+
+typeset tex"The \codefont{print} function, which we have been using, is a prefix function that
+\textbf{nat} defines for you.";
+
+codeblock tex"print print;";
+
+typeset tex"You can define infix functions in a similar fashion. Infix functions must
+be binary.";
+
+codeblock "let infix plus = (x, y) => x + y;
+
+print 2 plus 2;";
+
+typeset tex"The arithmetic operators that we have been using so far are infix functions
+defined by the interpreter.";
+
+codeblock "[+,-,*].map(print);";
+
+typeset tex"Two paradigms are available when defining the body of a function: the functional
+and the imperative. So far we have used the functional paradigm, in which the entire body
+is an expression, and the function implicitly returns that expression when evaluated.\\
+\\
+The imperative paradigm allows a sequence of statements to be evaluated and makes a return value
+optional.";
+
+codeblock "let f = x => {
+  x = x + 1;
+  print x;
+};
+
+f(1);";
+
+typeset tex"To return a value from a function, use the \codefont{return} keyword.";
+
+codeblock "let f = x => {
+  return f;
+};";
+
+typeset tex"In the body of a function, you can define variables with the \codefont{let} keyword.
+In fact, each block of code we've evaluated, and any file written in \textbf{nat}, is just an
+imperative function.";
+
+anchor(
+  "values",
+  tex"\color{black}\textbf{2. Values}"
+);
+
+typeset tex"
+  Certain primitive objects are always available: numbers, truth values, strings, and symbols.
+  Alongside these objects are basic functions for evaluating equality, and for doing math, boolean
+  logic, and string manipulation.
+";
+
+anchor(
+  "objects",
+  tex"\color{black}\textbf{3. Objects}"
+);
+
+typeset tex"
+\textbf{nat} defines a number of objects for structuring
+other objects: sets, sequences, maps, and trees.
+\hfill \\
+\hfill \\
+1. Sets
+\hfill \\
+\hfill \\
+To make a set, use curly braces.
+";
+
+codeblock "let x = {1, 2, 3};";
+
+typeset tex"The set object comes with some familiar functions,
+which you can access with the $object.function$ syntax. Some functions
+have terser symbolic aliases that can be used as infixes.";
+
+codeblock "let x = {1, 2, 3}.union({3, 4, 5});
+print x;
+
+// Or equivalently:
+
+let y = {1, 2, 3} & {3, 4, 5};
+print x == y;
+";
+
+codeblock "print {1, 2, 3}.powerset();
+";
+
+typeset tex"It's also possible to make a set by specifying
+conditions that its elements satisfy. We call this a \textit{set comprehension}.";
+
+codeblock "print {a | a in {true,false}, a};";
+
+typeset tex"When using the comprehension syntax, we always introduce a bound
+variable and a source object with a \textit{variable in object} phrase.
+These are the \textit{generators} for the comprehensions. Once a variable has been
+introduced, we can restrict it with any number of predicates to its right. We can
+also refer to it within other generators to its right.";
+
+codeblock "print {b | a in {{1, 2}, {3, 4}}, b in a, b not in {2, 3}};";
+
+typeset tex"While they're not the same as functions, sets can be applied to arguments,
+so that in certain situations they're indistinguishable from their characteristic functions.";
+
+codeblock "let x = {1, 2, 3};
+print x(1);
+print x(4);";
+
+typeset tex"Arbitrary expressions can occur in the body of set comprehensions, including
+other set comprehensions. (There is a caveat -- such expressions must be hashable. We will
+gloss over this detail for the moment.)";
+
+codeblock "print {(x => x + 1)(x) | x in {1,2,3}};";
+
+typeset tex"
+2. Sequences
+\hfill \\
+\hfill \\
+A sequence is a totally ordered multiset. To make a sequence, use square brackets.";
+
+codeblock "let x = [1, 2, 3];
+print x.values;";
+
+typeset tex"Because sequences have order, they can be accessed by index. Indices begin at $0$.";
+
+codeblock "print [1, 2, 3][0];";
+
+typeset tex"
+3. Maps
+\hfill \\
+\hfill \\
+To define a map, enclose a sequence of key value pairs, separated by colons, within curly braces.
+Access the value at some key with square brackets.
+";
+
+codeblock "let x = {true: false, false: true};
+
+print x[true];
+print x[false];";
+
+typeset tex"
+4. Trees
+\hfill \\
+\hfill \\
+To define the node of a tree, use square brackets.
+";
+
+codeblock "let x = [1 2 3];
+
+print x;";
+
+anchor(
+  "control",
+  tex"\color{black}\textbf{3. Control}"
+);
