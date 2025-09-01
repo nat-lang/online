@@ -1,4 +1,4 @@
-use .common
+use ../online/common
 
 typeset tex"
 \section{Introduction}
