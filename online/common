@@ -1,4 +1,4 @@
-use ../core/online as context
+use context as context
 
 let output = [];
 let doc = x => GuideTexDoc(x, context.window.center);
