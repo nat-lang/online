@@ -1,7 +1,7 @@
-use host, path, window from context
+use ../core/online as context
 
 let output = [];
-let doc = x => GuideTexDoc(x, window.center);
+let doc = x => GuideTexDoc(x, context.window.center);
 
 let prefix typeset = output.push . doc;
 let prefix codeblock = output.push . Codeblock;
@@ -19,8 +19,8 @@ let anchor = (title, tex) => {
   output.push(
     Anchor(
       title,
-      online.path,
-      doc("\href{#{host}#{path}##{title}}{#{tex}}")
+      context.path,
+      doc("\href{#{context.host}#{context.path}##{title}}{#{tex}}")
     )
   );
 };
