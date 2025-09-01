@@ -12,5 +12,5 @@ in the library that you're familiar with and experiment with it. The formalism s
 the paper closely enough to recognize.
 
 \hfill \break
-To learn more about \textbf{nat}, consult the \href{#{online.host}/guide/natlang}{documentation}.
+To learn more about \textbf{nat}, consult the \href{#{context.host}/guide/natlang}{documentation}.
 ";
