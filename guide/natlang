@@ -2,7 +2,7 @@ use ../online/common
 
 anchor(
   "functions",
-  tex"\color{black}\textbf{1. Functions}"
+  md"# Functions"
 );
 
 typeset tex"
@@ -11,7 +11,7 @@ typeset tex"
   do something with it after a fat arrow.
 ";
 
-codeblock "let f = x => x + 1;";
+codeblock nat"let f = x => x + 1;";
 
 typeset tex"Apply the function to an
   argument with parentheses and print the result with the \codefont{print} function.
@@ -130,7 +130,7 @@ imperative function.";
 
 anchor(
   "values",
-  tex"\color{black}\textbf{2. Values}"
+  tex"## Values"
 );
 
 typeset tex"
@@ -141,7 +141,7 @@ typeset tex"
 
 anchor(
   "objects",
-  tex"\color{black}\textbf{3. Objects}"
+  tex"## Objects"
 );
 
 typeset tex"
@@ -238,5 +238,5 @@ print x;";
 
 anchor(
   "control",
-  tex"\color{black}\textbf{3. Control}"
+  tex"## Control"
 );
