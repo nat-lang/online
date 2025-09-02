@@ -5,7 +5,7 @@ anchor(
   "## Functions"
 );
 
-let mdCodefont = x => "<p style=#{Strings.quote}font-family: menlo#{Strings.quote}>bar</p>";
+let mdCodefont = x => "<span class=#{quote("codefont")}>bar</span>";
 
 markdown "
   Nat is a simple language, consisting of functions and the things
@@ -16,7 +16,7 @@ markdown "
 codeblock "let f = x => x + 1;";
 
 markdown tex"Apply the function to an
-  argument with parentheses and print the result with the #{mdCodefont("print}") function.
+  argument with parentheses and print the result with the #{mdCodefont("print")} function.
 ";
 
 codeblock "print f(1);";
