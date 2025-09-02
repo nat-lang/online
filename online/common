@@ -16,12 +16,12 @@ let prefix print = x => {
     __print__(x);
 };
 
-let anchor = (title, tex) => {
+let anchor = (title, md) => {
   output.push(
     Anchor(
       title,
-      context.path,
-      Markdown("[#{title}](#{context.host}#{context.path}##{title})")
+      "#{context.host}#{context.path}##{title}",
+      Markdown(md)
     )
   );
 };
