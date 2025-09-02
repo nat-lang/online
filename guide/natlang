@@ -2,7 +2,7 @@ use ../online/common
 
 anchor(
   "functions",
-  md"# Functions"
+  "# Functions"
 );
 
 typeset tex"
