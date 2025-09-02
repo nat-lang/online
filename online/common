@@ -20,7 +20,7 @@ let anchor = (title, md) => {
   output.push(
     Anchor(
       title,
-      "#{context.path}##{title}",
+      context.path,
       Markdown(md)
     )
   );
