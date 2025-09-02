@@ -5,7 +5,7 @@ let doc = x => GuideTexDoc(x, context.window.center);
 
 let prefix typeset = output.push . doc;
 let prefix codeblock = output.push . Codeblock;
-let prefix markdown = out.push . Markdown;
+let prefix markdown = output.push . Markdown;
 
 let prefix print = x => {
   if (vmType(x) == OInstance && callable(x.viz))
