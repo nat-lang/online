@@ -11,7 +11,7 @@ typeset tex"
   do something with it after a fat arrow.
 ";
 
-codeblock nat"let f = x => x + 1;";
+codeblock "let f = x => x + 1;";
 
 typeset tex"Apply the function to an
   argument with parentheses and print the result with the \codefont{print} function.
