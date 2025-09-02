@@ -5,7 +5,7 @@ anchor(
   "## Functions"
 );
 
-let mdCodefont = x => "<span class=#{quote("codefont")}>bar</span>";
+let mdCodefont = x => "<span class=#{quote("codefont")}>#{x}</span>";
 
 markdown "
   Nat is a simple language, consisting of functions and the things
@@ -34,7 +34,7 @@ codeblock "let f = x y z => x + y - z;
 
 print f(1)(2)(3); ";
 
-markdown tex"Affixing a parameter with a `$*$' produces a variadic function. Within the scope
+markdown tex"Affixing a parameter with a #{mdCodefont("'*'")} produces a variadic function. Within the scope
 of the function, the parameter will be a sequence. We'll see sequences in more detail later.";
 
 codeblock "let f = (*x) => x.reduce(+, 0);
@@ -181,8 +181,8 @@ conditions that its elements satisfy. We call this a \textit{set comprehension}.
 codeblock "print {a | a in {true,false}, a};";
 
 markdown tex"When using the comprehension syntax, we always introduce a bound
-variable and a source object with a \textit{variable in object} phrase.
-These are the \textit{generators} for the comprehensions. Once a variable has been
+variable and a source object with a *variable in object* phrase.
+These are the generators for the comprehensions. Once a variable has been
 introduced, we can restrict it with any number of predicates to its right. We can
 also refer to it within other generators to its right.";
 
