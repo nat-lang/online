@@ -5,6 +5,7 @@ let doc = x => GuideTexDoc(x, context.window.center);
 
 let prefix typeset = output.push . doc;
 let prefix codeblock = output.push . Codeblock;
+let prefix markdown = out.push . Markdown;
 
 let prefix print = x => {
   if (vmType(x) == OInstance && callable(x.viz))
@@ -20,7 +21,7 @@ let anchor = (title, tex) => {
     Anchor(
       title,
       context.path,
-      doc("\href{#{context.host}#{context.path}##{title}}{#{tex}}")
+      Markdown("[#{title}](#{context.host}#{context.path})")
     )
   );
 };
