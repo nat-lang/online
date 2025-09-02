@@ -21,7 +21,7 @@ let anchor = (title, tex) => {
     Anchor(
       title,
       context.path,
-      Markdown("[#{title}](#{context.host}#{context.path})")
+      Markdown("[#{title}](#{context.host}#{context.path}/#{title})")
     )
   );
 };
