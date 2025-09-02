@@ -5,6 +5,8 @@ anchor(
   "## Functions"
 );
 
+let mdCodefont = x => "<p style=#{Strings.quote}font-family: menlo#{Strings.quote}>bar</p>";
+
 markdown "
   Nat is a simple language, consisting of functions and the things
   that functions act on. To define a function, introduce a variable and then
@@ -19,8 +21,8 @@ markdown tex"Apply the function to an
 
 codeblock "print f(1);";
 
-markdown tex"Functions can have any number of parameters. Wrapping $n$ parameters in
-parentheses and separating them with commas produces an $n$-ary function.";
+markdown tex"Functions can have any number of parameters. Wrapping *n* parameters in
+parentheses and separating them with commas produces an *n*-ary function.";
 
 codeblock "let f = (x, y, z) => x + y - z;
 
