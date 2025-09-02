@@ -90,7 +90,7 @@ codeblock "let prefix f = x => x + 1;
 print f 1;";
 
 markdown tex"The #{mdCodefont("print")} function, which we have been using, is a prefix function that
-\textbf{nat} defines for you.";
+nat defines for you.";
 
 codeblock tex"print print;";
 
@@ -127,7 +127,7 @@ codeblock "let f = x => {
 };";
 
 markdown tex"In the body of a function, you can define variables with the #{mdCodefont("let")} keyword.
-In fact, each block of code we've evaluated, and any file written in \textbf{nat}, is just an
+In fact, each block of code we've evaluated, and any file written in nat, is an
 imperative function.";
 
 anchor(
@@ -147,7 +147,7 @@ anchor(
 );
 
 markdown tex"
-\textbf{nat} defines a number of objects for structuring
+Nat defines a number of objects for structuring
 other objects: sets, sequences, maps, and trees.
 \hfill \\
 \hfill \\
