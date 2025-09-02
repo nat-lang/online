@@ -16,7 +16,7 @@ markdown "
 codeblock "let f = x => x + 1;";
 
 markdown tex"Apply the function to an
-  argument with parentheses and print the result with the \codefont{print} function.
+  argument with parentheses and print the result with the #{mdCodefont("print}") function.
 ";
 
 codeblock "print f(1);";
@@ -89,7 +89,7 @@ codeblock "let prefix f = x => x + 1;
 
 print f 1;";
 
-markdown tex"The \codefont{print} function, which we have been using, is a prefix function that
+markdown tex"The #{mdCodefont("print")} function, which we have been using, is a prefix function that
 \textbf{nat} defines for you.";
 
 codeblock tex"print print;";
@@ -120,13 +120,13 @@ codeblock "let f = x => {
 
 f(1);";
 
-markdown tex"To return a value from a function, use the \codefont{return} keyword.";
+markdown tex"To return a value from a function, use the #{mdCodefont("return")} keyword.";
 
 codeblock "let f = x => {
   return f;
 };";
 
-markdown tex"In the body of a function, you can define variables with the \codefont{let} keyword.
+markdown tex"In the body of a function, you can define variables with the #{mdCodefont("let")} keyword.
 In fact, each block of code we've evaluated, and any file written in \textbf{nat}, is just an
 imperative function.";
 
