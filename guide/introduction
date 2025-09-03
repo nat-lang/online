@@ -1,20 +1,266 @@
 use ../online/common
 
+anchor(
+  "functions",
+  "### Functions"
+);
+
+let mdNatKeyword = x => "<span class=#{quote("codefont keyword")}>#{x}</span>";
+let mdNatCode = x => "<span class=#{quote("codefont")}>#{x}</span>";
+
 markdown "
-### Welcome
-<br>
-
-natlang.online is an environment for building, evaluating, and sharing semantic grammars.
-It's powered by the formal language nat, which makes it easy to express ideas
-from the linguistic and philosophical literature on semantics in an evaluable format.
-
-<br>
-
-If you have a background in formal semantics, you should be able to jump right in: pick a paper
-in the library that you're familiar with and experiment with it. The formalism should match
-the paper closely enough to recognize.
-
-<br>
-
-To learn more about nat, consult the [documentation](/guide/natlang).
+  Nat is a simple language, consisting of functions and the things
+  that functions act on. To define a function, introduce a variable and then
+  do something with it after a fat arrow.
 ";
+
+codeblock "let f = x => x + 1;";
+
+markdown "Apply the function to an
+  argument with parentheses and print the result with the #{mdNatKeyword("print")} function.
+";
+
+codeblock "print f(1);";
+
+markdown "Functions can have any number of parameters. Wrapping *n* parameters in
+parentheses and separating them with commas produces an *n*-ary function.";
+
+codeblock "let f = (x, y, z) => x + y - z;
+
+print f(1, 2, 3); ";
+
+markdown "Omitting the parentheses and commas produces a curried function.";
+
+codeblock "let f = x y z => x + y - z;
+
+print f(1)(2)(3); ";
+
+markdown "Affixing a parameter with a '#{mdNatKeyword("*")}' produces a variadic function. Within the scope
+of the function, the parameter will be a sequence. We'll see sequences in more detail later.";
+
+codeblock "let f = (*x) => x.reduce(+, 0);
+
+print f(1);
+print f(1, 2);
+print f(1, 2, 3); ";
+
+markdown "Functions can have zero parameters.";
+
+codeblock "let f = () => 1;
+
+print f();";
+
+markdown "Functions can be partial. To define a partial function, use a value for a
+parameter. The function will be undefined at any other value.";
+
+codeblock "let f = 1 => 2;
+
+print f(1);
+print f(2); ";
+
+markdown "Match multiple values by separating parameter image pairs with a '#{mdNatKeyword("|")}'.";
+
+codeblock "let f = 1 => 2 | 2 => 3;
+
+print f(1);
+print f(2);
+print f(3); ";
+
+markdown "You can match specific values when defining total functions as well, by
+supplying a final catchall parameter, which is just a normal bound variable.";
+
+codeblock "let f = 1 => 2 | x => x * 2;
+
+print f(1);
+print f(2);";
+
+markdown "Functions can be anonymous, and they can be the arguments of other functions.
+Here we pass two anonymous functions to the built in composition function.";
+
+codeblock "let f = (x => x + 1) . (x => x - 1);
+
+print f(1);
+print f(2); ";
+
+markdown "While the default syntax for applying a function is with parentheses, it's also
+possible to define prefix functions, which apply to arguments that they precede.
+Prefix functions must be unary.";
+
+codeblock "let prefix f = x => x + 1;
+
+print f 1;";
+
+markdown "The #{mdNatKeyword("print")} function is a prefix function that nat defines for you.";
+
+codeblock "print print;";
+
+markdown "You can define infix functions in a similar fashion. Infix functions must
+be binary.";
+
+codeblock "let infix plus = (x, y) => x + y;
+
+print 2 plus 2;";
+
+markdown "Note that both prefix and infix functions can be called with parentheses.";
+
+codeblock "print(plus(2,2);";
+
+markdown "The arithmetic operators that we have been using so far are infix functions
+defined by the interpreter.";
+
+codeblock "[+,-,*].map(print);";
+
+markdown "Two paradigms are available when defining the body of a function: the functional
+and the imperative. So far we have used the functional paradigm, in which the entire body
+is an expression, and the function implicitly returns that expression when evaluated.
+
+<br>
+
+The imperative paradigm allows a sequence of statements to be evaluated and makes a return value
+optional.";
+
+codeblock "let f = x => {
+  x = x + 1;
+  print x;
+};
+
+f(1);";
+
+markdown "If an imperative function has no explicit return value, it will return #{mdNatCode("nil")} when called.";
+
+codeblock "print(f(1));";
+
+markdown "To return a value from a function, use the #{mdNatKeyword("return")} keyword.";
+
+codeblock "let f = x => {
+  return f;
+};";
+
+markdown "The body of an imperative function is its own namespace, so you can define variables with
+the #{mdNatKeyword("let")} keyword, just as in the top level of these blocks of code. In fact, each
+of these blocks, and any file written in nat, is itself an imperative function.";
+
+anchor(
+  "values",
+  "### Values"
+);
+
+markdown "
+  Certain primitive objects are always available: numbers, truth values, strings, and symbols.
+  Alongside these objects are basic functions for doing arithmetic, boolean
+  logic, string manipulation, and for testing equality.
+  
+  <br>
+
+  Numbers are created just as we've been doing, and decimals are similarly intuitive. The arithmetic operations
+  defined by the interpreter are addition #{mdNatCode("+")}, subtraction #{mdNatCode("-")},
+  division #{mdNatCode("/")}, multiplication #{mdNatCode("*")}, and greater than #{mdNatCode(">")}, less than #{mdNatCode("<")},
+  greater than or equal #{mdNatCode(">=")}, and less than or equal #{mdNatCode("<=")}.
+  
+  <br>
+
+  The boolean literals are #{mdNatCode("true")} and #{mdNatCode("false")}.
+";
+
+anchor(
+  "objects",
+  "### Objects"
+);
+
+markdown "
+Nat defines a number of objects for structuring
+other objects: sets, sequences, maps, and trees.
+
+<br>
+
+#### Sets
+<br>
+To make a set, use curly braces.
+";
+
+codeblock "let x = {1, 2, 3};";
+
+markdown "The set object comes with some familiar functions,
+which you can access with the #{mdNatCode("object.function")} syntax.";
+
+codeblock "let x = {1, 2, 3}.union({3, 4, 5});
+print x;";
+
+markdown "Some functions have terser symbolic aliases that can be used as infixes.";
+
+codeblock "let y = {1, 2, 3} & {3, 4, 5};
+print x == y;";
+
+markdown "Set objects also have unary properties.";
+
+codeblock "print {1, 2, 3}.powerset();";
+
+markdown "It's possible to make a set by specifying
+conditions that its elements satisfy. We call this a *set comprehension*.";
+
+codeblock "print {a | a in {true,false}, a};";
+
+markdown "When using the comprehension syntax, we always introduce a bound
+variable and a source object with a #{mdNatCode("variable")} #{mdNatKeyword(" in ")} #{mdNatCode("object")} phrase.
+These are the generators for the comprehensions. Once a variable has been
+introduced, we can restrict it with any number of predicates to its right. We can
+also refer to it within other generators to its right.";
+
+codeblock "print {b | a in {{1, 2}, {3, 4}}, b in a, b not in {2, 3}};";
+
+markdown "While they're not the same as functions, sets can be applied to arguments,
+so that in certain situations they're indistinguishable from their characteristic functions.";
+
+codeblock "let x = {1, 2, 3};
+print x(1);
+print x(4);";
+
+markdown "Arbitrary expressions can occur in the body of set comprehensions, including
+other set comprehensions. (There is a caveat &ndash; such expressions must be hashable. We will
+gloss over this detail for the moment.)";
+
+codeblock "print {{y | y in {x + 1, x - 1}} | x in {1,2,3}};";
+
+markdown "
+#### Sequences
+<br>
+
+A sequence is a totally ordered multiset. To make a sequence, use square brackets.";
+
+codeblock "let x = [1, 2, 3];
+print x.values;";
+
+markdown "Because sequences have order, they can be accessed by index. Indices begin at 0.";
+
+codeblock "print [1, 2, 3][0];";
+
+markdown "
+#### Maps
+<br>
+To define a map, enclose a sequence of key value pairs, separated by colons, within curly braces.
+Access the value at some key with square brackets.
+";
+
+codeblock "let x = {true: false, false: true};
+
+print x[true];
+print x[false];";
+
+markdown "
+#### Trees
+
+<br>
+
+To define a tree, use square brackets, and separate the nodes with spaces. Note that to visualize
+trees, we will typeset them in LaTeX. But because we rely on a remote server to render the LaTeX,
+this is not instantaneous.
+";
+
+codeblock "let x = [1 2 3];
+
+print x;";
+
+anchor(
+  "control",
+  "### Control"
+);
