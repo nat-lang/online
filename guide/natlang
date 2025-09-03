@@ -256,11 +256,18 @@ trees, we will typeset them in LaTeX, but because we rely on a remote server for
 this will not be instantaneous.
 ";
 
+codeblock "let x = [1 2 3];
+
+print x;";
+
+markdown "Specify the value of an interior node by affixing it to its leftmost bracket.";
+
 codeblock "let x = [.1 2 3];
 
 print x;";
 
 markdown "Specify the value of an interior node by affixing it to its leftmost bracket.";
+
 
 anchor(
   "control",
