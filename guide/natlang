@@ -2,7 +2,7 @@ use ../online/common
 
 anchor(
   "functions",
-  "## Functions"
+  "### Functions"
 );
 
 let mdCodefont = x => "<span class=#{quote("codefont")}>#{x}</span>";
@@ -108,8 +108,10 @@ codeblock "[+,-,*].map(print);";
 
 markdown tex"Two paradigms are available when defining the body of a function: the functional
 and the imperative. So far we have used the functional paradigm, in which the entire body
-is an expression, and the function implicitly returns that expression when evaluated.\\
-\\
+is an expression, and the function implicitly returns that expression when evaluated.
+
+<br>
+
 The imperative paradigm allows a sequence of statements to be evaluated and makes a return value
 optional.";
 
@@ -132,7 +134,7 @@ imperative function.";
 
 anchor(
   "values",
-  tex"## Values"
+  tex"### Values"
 );
 
 markdown tex"
@@ -143,17 +145,17 @@ markdown tex"
 
 anchor(
   "objects",
-  tex"## Objects"
+  tex"### Objects"
 );
 
 markdown tex"
 Nat defines a number of objects for structuring
 other objects: sets, sequences, maps, and trees.
-\hfill \\
-\hfill \\
-1. Sets
-\hfill \\
-\hfill \\
+
+<br>
+
+#### Sets
+<br>
 To make a set, use curly braces.
 ";
 
@@ -176,7 +178,7 @@ codeblock "print {1, 2, 3}.powerset();
 ";
 
 markdown tex"It's also possible to make a set by specifying
-conditions that its elements satisfy. We call this a \textit{set comprehension}.";
+conditions that its elements satisfy. We call this a *set comprehension*.";
 
 codeblock "print {a | a in {true,false}, a};";
 
@@ -240,5 +242,5 @@ print x;";
 
 anchor(
   "control",
-  tex"## Control"
+  tex"### Control"
 );
