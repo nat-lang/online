@@ -2,7 +2,7 @@ use ../online/common
 
 anchor(
   "functions",
-  md"### Functions"
+  "### Functions"
 );
 
 let mdCodefont = x => "<span class=#{quote("codefont")}>#{x}</span>";
@@ -15,26 +15,26 @@ markdown "
 
 codeblock "let f = x => x + 1;";
 
-markdown md"Apply the function to an
+markdown "Apply the function to an
   argument with parentheses and print the result with the #{mdCodefont("print")} function.
 ";
 
 codeblock "print f(1);";
 
-markdown md"Functions can have any number of parameters. Wrapping *n* parameters in
+markdown "Functions can have any number of parameters. Wrapping *n* parameters in
 parentheses and separating them with commas produces an *n*-ary function.";
 
 codeblock "let f = (x, y, z) => x + y - z;
 
 print f(1, 2, 3); ";
 
-markdown md"Omitting the parentheses and commas produces a curried function.";
+markdown "Omitting the parentheses and commas produces a curried function.";
 
 codeblock "let f = x y z => x + y - z;
 
 print f(1)(2)(3); ";
 
-markdown md"Affixing a parameter with a '#{mdCodefont("*")}' produces a variadic function. Within the scope
+markdown "Affixing a parameter with a '#{mdCodefont("*")}' produces a variadic function. Within the scope
 of the function, the parameter will be a sequence. We'll see sequences in more detail later.";
 
 codeblock "let f = (*x) => x.reduce(+, 0);
@@ -43,13 +43,13 @@ print f(1);
 print f(1, 2);
 print f(1, 2, 3); ";
 
-markdown md"Functions can have zero parameters.";
+markdown "Functions can have zero parameters.";
 
 codeblock "let f = () => 1;
 
 print f();";
 
-markdown md"Functions can be partial. To define a partial function, use a value for a
+markdown "Functions can be partial. To define a partial function, use a value for a
 parameter. The function will be undefined at any other value.";
 
 codeblock "let f = 1 => 2;
@@ -57,7 +57,7 @@ codeblock "let f = 1 => 2;
 print f(1);
 print f(2); ";
 
-markdown md"Match multiple values by separating parameter image pairs with a '#{mdCodefont("|")}'.";
+markdown "Match multiple values by separating parameter image pairs with a '#{mdCodefont("|")}'.";
 
 codeblock "let f = 1 => 2 | 2 => 3;
 
@@ -65,7 +65,7 @@ print f(1);
 print f(2);
 print f(3); ";
 
-markdown md"You can match specific values when defining total functions as well, by
+markdown "You can match specific values when defining total functions as well, by
 supplying a final catchall parameter, which is just a normal bound variable.";
 
 codeblock "let f = 1 => 2 | x => x * 2;
@@ -73,7 +73,7 @@ codeblock "let f = 1 => 2 | x => x * 2;
 print f(1);
 print f(2);";
 
-markdown md"Functions can be anonymous, and they can be the arguments of other functions.
+markdown "Functions can be anonymous, and they can be the arguments of other functions.
 Here we pass two anonymous functions to the built in composition function.";
 
 codeblock "let f = (x => x + 1) . (x => x - 1);
@@ -81,7 +81,7 @@ codeblock "let f = (x => x + 1) . (x => x - 1);
 print f(1);
 print f(2); ";
 
-markdown md"While the default syntax for applying a function is with parentheses, it's also
+markdown "While the default syntax for applying a function is with parentheses, it's also
 possible to define prefix functions, which apply to arguments that they precede.
 Prefix functions must be unary.";
 
@@ -89,23 +89,23 @@ codeblock "let prefix f = x => x + 1;
 
 print f 1;";
 
-markdown md"The #{mdCodefont("print")} function is a prefix function that nat defines for you.";
+markdown "The #{mdCodefont("print")} function is a prefix function that nat defines for you.";
 
-codeblock md"print print;";
+codeblock "print print;";
 
-markdown md"You can define infix functions in a similar fashion. Infix functions must
+markdown "You can define infix functions in a similar fashion. Infix functions must
 be binary.";
 
 codeblock "let infix plus = (x, y) => x + y;
 
 print 2 plus 2;";
 
-markdown md"The arithmetic operators that we have been using so far are infix functions
+markdown "The arithmetic operators that we have been using so far are infix functions
 defined by the interpreter.";
 
 codeblock "[+,-,*].map(print);";
 
-markdown md"Two paradigms are available when defining the body of a function: the functional
+markdown "Two paradigms are available when defining the body of a function: the functional
 and the imperative. So far we have used the functional paradigm, in which the entire body
 is an expression, and the function implicitly returns that expression when evaluated.
 
@@ -121,22 +121,22 @@ codeblock "let f = x => {
 
 f(1);";
 
-markdown md"To return a value from a function, use the #{mdCodefont("return")} keyword.";
+markdown "To return a value from a function, use the #{mdCodefont("return")} keyword.";
 
 codeblock "let f = x => {
   return f;
 };";
 
-markdown md"In the body of a function, you can define variables with the #{mdCodefont("let")} keyword.
+markdown "In the body of a function, you can define variables with the #{mdCodefont("let")} keyword.
 In fact, each block of code we've evaluated, and any file written in nat, is an
 imperative function.";
 
 anchor(
   "values",
-  md"### Values"
+  "### Values"
 );
 
-markdown md"
+markdown "
   Certain primitive objects are always available: numbers, truth values, strings, and symbols.
   Alongside these objects are basic functions for evaluating equality, and for doing math, boolean
   logic, and string manipulation.
@@ -144,10 +144,10 @@ markdown md"
 
 anchor(
   "objects",
-  md"### Objects"
+  "### Objects"
 );
 
-markdown md"
+markdown "
 Nat defines a number of objects for structuring
 other objects: sets, sequences, maps, and trees.
 
@@ -160,7 +160,7 @@ To make a set, use curly braces.
 
 codeblock "let x = {1, 2, 3};";
 
-markdown md"The set object comes with some familiar functions,
+markdown "The set object comes with some familiar functions,
 which you can access with the $object.function$ syntax. Some functions
 have terser symbolic aliases that can be used as infixes.";
 
@@ -176,12 +176,12 @@ print x == y;
 codeblock "print {1, 2, 3}.powerset();
 ";
 
-markdown md"It's also possible to make a set by specifying
+markdown "It's also possible to make a set by specifying
 conditions that its elements satisfy. We call this a *set comprehension*.";
 
 codeblock "print {a | a in {true,false}, a};";
 
-markdown md"When using the comprehension syntax, we always introduce a bound
+markdown "When using the comprehension syntax, we always introduce a bound
 variable and a source object with a *variable in object* phrase.
 These are the generators for the comprehensions. Once a variable has been
 introduced, we can restrict it with any number of predicates to its right. We can
@@ -189,20 +189,20 @@ also refer to it within other generators to its right.";
 
 codeblock "print {b | a in {{1, 2}, {3, 4}}, b in a, b not in {2, 3}};";
 
-markdown md"While they're not the same as functions, sets can be applied to arguments,
+markdown "While they're not the same as functions, sets can be applied to arguments,
 so that in certain situations they're indistinguishable from their characteristic functions.";
 
 codeblock "let x = {1, 2, 3};
 print x(1);
 print x(4);";
 
-markdown md"Arbitrary expressions can occur in the body of set comprehensions, including
+markdown "Arbitrary expressions can occur in the body of set comprehensions, including
 other set comprehensions. (There is a caveat -- such expressions must be hashable. We will
 gloss over this detail for the moment.)";
 
 codeblock "print {(x => x + 1)(x) | x in {1,2,3}};";
 
-markdown md"
+markdown "
 #### Sequences
 <br>
 
@@ -211,11 +211,11 @@ A sequence is a totally ordered multiset. To make a sequence, use square bracket
 codeblock "let x = [1, 2, 3];
 print x.values;";
 
-markdown md"Because sequences have order, they can be accessed by index. Indices begin at 0.";
+markdown "Because sequences have order, they can be accessed by index. Indices begin at 0.";
 
 codeblock "print [1, 2, 3][0];";
 
-markdown md"
+markdown "
 #### Maps
 <br>
 To define a map, enclose a sequence of key value pairs, separated by colons, within curly braces.
@@ -227,7 +227,7 @@ codeblock "let x = {true: false, false: true};
 print x[true];
 print x[false];";
 
-markdown md"
+markdown "
 #### Trees
 
 <br>
@@ -241,5 +241,5 @@ print x;";
 
 anchor(
   "control",
-  md"### Control"
+  "### Control"
 );
