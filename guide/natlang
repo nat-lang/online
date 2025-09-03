@@ -82,15 +82,14 @@ print f(1);
 print f(2); ";
 
 markdown tex"While the default syntax for applying a function is with parentheses, it's also
-possible to define prefix functions, which apply to arguments that they immediately precede.
+possible to define prefix functions, which apply to arguments that they precede.
 Prefix functions must be unary.";
 
 codeblock "let prefix f = x => x + 1;
 
 print f 1;";
 
-markdown tex"The #{mdCodefont("print")} function, which we have been using, is a prefix function that
-nat defines for you.";
+markdown tex"The #{mdCodefont("print")} function is a prefix function that nat defines for you.";
 
 codeblock tex"print print;";
 
