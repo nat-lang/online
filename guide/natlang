@@ -5,7 +5,8 @@ anchor(
   "### Functions"
 );
 
-let mdCodefont = x => "<span class=#{quote("codefont")}>#{x}</span>";
+let mdNatKeyword = x => "<span class=#{quote("codefont")} #{quote("keyword")}>#{x}</span>";
+let mdNatCode = x => "<span class=#{quote("codefont")}>#{x}</span>";
 
 markdown "
   Nat is a simple language, consisting of functions and the things
@@ -16,7 +17,7 @@ markdown "
 codeblock "let f = x => x + 1;";
 
 markdown "Apply the function to an
-  argument with parentheses and print the result with the #{mdCodefont("print")} function.
+  argument with parentheses and print the result with the #{mdNatKeyword("print")} function.
 ";
 
 codeblock "print f(1);";
@@ -34,7 +35,7 @@ codeblock "let f = x y z => x + y - z;
 
 print f(1)(2)(3); ";
 
-markdown "Affixing a parameter with a '#{mdCodefont("*")}' produces a variadic function. Within the scope
+markdown "Affixing a parameter with a '#{mdNatKeyword("*")}' produces a variadic function. Within the scope
 of the function, the parameter will be a sequence. We'll see sequences in more detail later.";
 
 codeblock "let f = (*x) => x.reduce(+, 0);
@@ -57,7 +58,7 @@ codeblock "let f = 1 => 2;
 print f(1);
 print f(2); ";
 
-markdown "Match multiple values by separating parameter image pairs with a '#{mdCodefont("|")}'.";
+markdown "Match multiple values by separating parameter image pairs with a '#{mdNatKeyword("|")}'.";
 
 codeblock "let f = 1 => 2 | 2 => 3;
 
@@ -89,7 +90,7 @@ codeblock "let prefix f = x => x + 1;
 
 print f 1;";
 
-markdown "The #{mdCodefont("print")} function is a prefix function that nat defines for you.";
+markdown "The #{mdNatKeyword("print")} function is a prefix function that nat defines for you.";
 
 codeblock "print print;";
 
@@ -125,13 +126,17 @@ codeblock "let f = x => {
 
 f(1);";
 
-markdown "To return a value from a function, use the #{mdCodefont("return")} keyword.";
+markdown "If you supply no return value, the result of the function will be undefined.";
+
+codeblock "print(f(1));";
+
+markdown "To return a value from a function, use the #{mdNatKeyword("return")} keyword.";
 
 codeblock "let f = x => {
   return f;
 };";
 
-markdown "In the body of a function, you can define variables with the #{mdCodefont("let")} keyword.
+markdown "In the body of a function, you can define variables with the #{mdNatKeyword("let")} keyword.
 In fact, each block of code we've evaluated, and any file written in nat, is an
 imperative function.";
 
