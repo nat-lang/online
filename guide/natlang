@@ -5,7 +5,7 @@ anchor(
   "### Functions"
 );
 
-let mdNatKeyword = x => "<span class=#{quote("codefont")} #{quote("keyword")}>#{x}</span>";
+let mdNatKeyword = x => "<span class=#{quote("codefont keyword")}>#{x}</span>";
 let mdNatCode = x => "<span class=#{quote("codefont")}>#{x}</span>";
 
 markdown "
@@ -126,7 +126,7 @@ codeblock "let f = x => {
 
 f(1);";
 
-markdown "If you supply no return value, the result of the function will be undefined.";
+markdown "If an imperative function has no explicit return value, it will return #{mdNatCode("nil")} when called.";
 
 codeblock "print(f(1));";
 
