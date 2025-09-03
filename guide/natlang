@@ -204,22 +204,21 @@ gloss over this detail for the moment.)";
 codeblock "print {(x => x + 1)(x) | x in {1,2,3}};";
 
 markdown tex"
-2. Sequences
-\hfill \\
-\hfill \\
+#### Sequences
+<br>
+
 A sequence is a totally ordered multiset. To make a sequence, use square brackets.";
 
 codeblock "let x = [1, 2, 3];
 print x.values;";
 
-markdown tex"Because sequences have order, they can be accessed by index. Indices begin at $0$.";
+markdown tex"Because sequences have order, they can be accessed by index. Indices begin at 0.";
 
 codeblock "print [1, 2, 3][0];";
 
 markdown tex"
-3. Maps
-\hfill \\
-\hfill \\
+#### Maps
+<br>
 To define a map, enclose a sequence of key value pairs, separated by colons, within curly braces.
 Access the value at some key with square brackets.
 ";
@@ -230,9 +229,10 @@ print x[true];
 print x[false];";
 
 markdown tex"
-4. Trees
-\hfill \\
-\hfill \\
+#### Trees
+
+<br>
+
 To define the node of a tree, use square brackets.
 ";
 
