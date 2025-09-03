@@ -136,9 +136,9 @@ codeblock "let f = x => {
   return f;
 };";
 
-markdown "In the body of a function, you can define variables with the #{mdNatKeyword("let")} keyword.
-In fact, each block of code we've evaluated, and any file written in nat, is an
-imperative function.";
+markdown "The body of an imperative function is its own namespace, so you can define variables with
+the #{mdNatKeyword("let")} keyword, just as in the top level of these blocks of code. In fact, each
+of these blocks, and any file written in nat, is itself an imperative function.";
 
 anchor(
   "values",
@@ -147,8 +147,17 @@ anchor(
 
 markdown "
   Certain primitive objects are always available: numbers, truth values, strings, and symbols.
-  Alongside these objects are basic functions for evaluating equality, and for doing math, boolean
-  logic, and string manipulation.
+  Alongside these objects are basic functions for doing arithmetic, boolean
+  logic, string manipulation, and for testing equality.
+  <br>
+
+  Numbers are created just as we've been doing, and decimals are similarly intuitive. The arithmetic operations
+  define by the interpreter are addition #{mdNatCode("+")}, subtraction #{mdNatCode("-")},
+  division #{mdNatCode("/")}, multiplication #{mdNatCode("*")}, and greater than #{mdNatCode(">")}, less than #{mdNatCode("<")},
+  greater than or equal #{mdNatCode(">=")}, and less than or equal #{mdNatCode("<=")}.
+  <br>
+
+  The boolean literals are #{mdNatCode("true")} and #{mdNatCode("false")}.
 ";
 
 anchor(
