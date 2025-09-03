@@ -149,12 +149,14 @@ markdown "
   Certain primitive objects are always available: numbers, truth values, strings, and symbols.
   Alongside these objects are basic functions for doing arithmetic, boolean
   logic, string manipulation, and for testing equality.
+  
   <br>
 
   Numbers are created just as we've been doing, and decimals are similarly intuitive. The arithmetic operations
-  define by the interpreter are addition #{mdNatCode("+")}, subtraction #{mdNatCode("-")},
+  defined by the interpreter are addition #{mdNatCode("+")}, subtraction #{mdNatCode("-")},
   division #{mdNatCode("/")}, multiplication #{mdNatCode("*")}, and greater than #{mdNatCode(">")}, less than #{mdNatCode("<")},
   greater than or equal #{mdNatCode(">=")}, and less than or equal #{mdNatCode("<=")}.
+  
   <br>
 
   The boolean literals are #{mdNatCode("true")} and #{mdNatCode("false")}.
@@ -179,22 +181,21 @@ To make a set, use curly braces.
 codeblock "let x = {1, 2, 3};";
 
 markdown "The set object comes with some familiar functions,
-which you can access with the $object.function$ syntax. Some functions
-have terser symbolic aliases that can be used as infixes.";
+which you can access with the #{mdNatCode("object.function")} syntax.";
 
 codeblock "let x = {1, 2, 3}.union({3, 4, 5});
-print x;
+print x;";
 
-// Or equivalently:
+markdown "Some functions have terser symbolic aliases that can be used as infixes.";
 
-let y = {1, 2, 3} & {3, 4, 5};
-print x == y;
-";
+codeblock "let y = {1, 2, 3} & {3, 4, 5};
+print x == y;";
 
-codeblock "print {1, 2, 3}.powerset();
-";
+markdown "Set objects also have unary properties.";
 
-markdown "It's also possible to make a set by specifying
+codeblock "print {1, 2, 3}.powerset();";
+
+markdown "It's possible to make a set by specifying
 conditions that its elements satisfy. We call this a *set comprehension*.";
 
 codeblock "print {a | a in {true,false}, a};";
