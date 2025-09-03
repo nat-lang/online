@@ -264,6 +264,11 @@ codeblock "let x = [1 2 3];
 
 print x;";
 
+markdown "Specify the value of an interior node by affixing it to its leftmost bracket
+with a '#{mdNatCode(".")}'.";
+
+codeblock "let x = [.1 2 3];
+
 markdown "Arbitrary expressions can occur as the data for trees.";
 
 codeblock "let f = x => x + 1;
@@ -274,11 +279,6 @@ markdown "However, because we use whitespace to distinguish nodes, any expressio
 itself contains whitespace must be wrapped in parentheses.";
 
 codeblock "print [.(1 + 1) (1 + 2) (1 + 3)];";
-
-markdown "Specify the value of an interior node by affixing it to its leftmost bracket
-with a '#{mdNatCode(".")}'.";
-
-codeblock "let x = [.1 2 3];
 
 print x;";
 
