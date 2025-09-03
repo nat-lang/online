@@ -273,7 +273,7 @@ print [.f(1) f(2) f(2)];";
 markdown "However, because we use whitespace to distinguish nodes, any expression that
 itself contains whitespace must be wrapped in parentheses.";
 
-codeblock "print [1 + 1];";
+codeblock "print [.(1 + 1) (1 + 2) (1 + 3)];";
 
 markdown "Specify the value of an interior node by affixing it to its leftmost bracket
 with a '#{mdNatCode(".")}'.";
