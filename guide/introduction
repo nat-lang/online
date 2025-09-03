@@ -1,16 +1,20 @@
 use ../online/common
 
-typeset tex"
-\section{Introduction}
+markdown "
+#### Welcome
+<br>
+
 natlang.online is an environment for building, evaluating, and sharing semantic grammars.
-It's powered by the formal language \textbf{nat}, which makes it easy to express ideas
+It's powered by the formal language nat, which makes it easy to express ideas
 from the linguistic and philosophical literature on semantics in an evaluable format.
 
-\hfill \break
+<br>
+
 If you have a background in formal semantics, you should be able to jump right in: pick a paper
 in the library that you're familiar with and experiment with it. The formalism should match
 the paper closely enough to recognize.
 
-\hfill \break
-To learn more about \textbf{nat}, consult the \href{#{context.host}/guide/natlang}{documentation}.
+<br>
+
+To learn more about nat, consult the [documentation](/guide/natlang).
 ";
