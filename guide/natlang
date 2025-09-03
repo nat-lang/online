@@ -251,14 +251,27 @@ markdown "
 
 <br>
 
-To define a tree, use square brackets, and separate the nodes with spaces. Note that to visualize
+To define a tree, use square brackets, and separate the nodes with spaces.
+
+<br>
+
+(Note that to visualize
 trees, we will typeset them in LaTeX, but because we rely on a remote server for the typesetting,
-this will not be instantaneous.
+this will not be instantaneous.)
 ";
 
 codeblock "let x = [1 2 3];
 
 print x;";
+
+markdown "Arbitrary expressions can occur as the data for trees.";
+
+codeblock "let f = x => x + 1;
+
+print [.f(1) f(2) f(2)];";
+
+markdown "However, because we use whitespace to distinguish nodes, any expression that
+itself contains whitespace must be wrapped in parentheses.";
 
 markdown "Specify the value of an interior node by affixing it to its leftmost bracket.";
 
