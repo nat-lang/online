@@ -1,7 +1,7 @@
 use ../online/common
 
 markdown "
-#### Welcome
+### Welcome
 <br>
 
 natlang.online is an environment for building, evaluating, and sharing semantic grammars.
