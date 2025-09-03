@@ -1,10 +1,11 @@
-use ../core/online as online
+use context as context
 
 let output = [];
-let doc = x => GuideTexDoc(x, online.window.center);
+let doc = x => GuideTexDoc(x, context.window.center);
 
 let prefix typeset = output.push . doc;
 let prefix codeblock = output.push . Codeblock;
+let prefix markdown = output.push . Markdown;
 
 let prefix print = x => {
   if (vmType(x) == OInstance && callable(x.viz))
@@ -15,12 +16,12 @@ let prefix print = x => {
     __print__(x);
 };
 
-let anchor = (title, tex) => {
+let anchor = (title, md) => {
   output.push(
     Anchor(
       title,
-      online.path,
-      doc("\href{#{online.host}#{online.path}##{title}}{#{tex}}")
+      context.path,
+      Markdown(md)
     )
   );
 };
