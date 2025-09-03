@@ -276,7 +276,7 @@ itself contains whitespace must be wrapped in parentheses.";
 codeblock "print [1 + 1];";
 
 markdown "Specify the value of an interior node by affixing it to its leftmost bracket
-with a '#{mdNatCode("'.'")}'.";
+with a '#{mdNatCode(".")}'.";
 
 codeblock "let x = [.1 2 3];
 
