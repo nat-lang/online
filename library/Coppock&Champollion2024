@@ -1,5 +1,10 @@
 use prelude
 
+anchor(
+  "Chapter 6: Function Application",
+  "### Chapter 6: Function Application"
+);
+
 // individuals.
 
 sym Agnetha, Bjorn, Benny, Carlos, Paco, Frida, Ariel, Ursula, Sebastian, Sam;
