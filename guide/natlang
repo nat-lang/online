@@ -6,6 +6,7 @@ anchor(
 );
 
 let mdNatKeyword = x => "<span class=#{quote("codefont keyword")}>#{x}</span>";
+let mdNatConstant = x => "<span class=#{quote("codefont constant")}>#{x}</span>";
 let mdNatCode = x => "<span class=#{quote("codefont")}>#{x}</span>";
 
 markdown "
