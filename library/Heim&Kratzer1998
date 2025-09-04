@@ -28,6 +28,17 @@ let trace = pronoun;
 
 let everyone: a -> (e -> t) -> t = g p => for all (x in e) p(x); 
 
-// put it all together.
+markdown "Here is a quick illustration of quantification, with binding
+via an assignment function. First define our composition rules.";
+
+let AssSensitiveFunctionApplication' <- AssSensitiveFunctionApplication;
+let PredicateAbstraction' <- PredicateAbstraction;
+
+typeset "(1) Assignment Sensitive Type Driven Function Application
+\[#{AssSensitiveFunctionApplication'.tex()}\]
+
+(2) Predicate Abstraction
+\[#{PredicateAbstraction'.tex()}\]";
+
 ex [he(1) left];
 ex [everyone [1 [trace(1) left]]];
