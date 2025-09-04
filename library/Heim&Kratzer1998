@@ -40,5 +40,7 @@ typeset "(1) Assignment Sensitive Type Driven Function Application
 (2) Predicate Abstraction
 \[#{PredicateAbstraction'.tex()}\]";
 
+markdown "To interpret *he left*, we appeal to (1).";
 ex [he(1) left];
+markdown "To interpret *everyone left*, we appeal to both (1) and (2).";
 ex [everyone [1 [trace(1) left]]];
