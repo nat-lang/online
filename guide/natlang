@@ -59,7 +59,7 @@ codeblock "let f = 1 => 2;
 print f(1);
 print f(2); ";
 
-markdown "Match multiple values by separating parameter image pairs with a '#{mdNatKeyword("|")}'.";
+markdown "Match multiple values by separating parameter image pairs with a '#{mdNatCode("|")}'.";
 
 codeblock "let f = 1 => 2 | 2 => 3;
 
@@ -229,7 +229,7 @@ markdown "
 A sequence is a totally ordered multiset. To make a sequence, use square brackets.";
 
 codeblock "let x = [1, 2, 3];
-print x.values;";
+print x;";
 
 markdown "Because sequences have order, they can be accessed by index. Indices begin at 0.";
 
