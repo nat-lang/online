@@ -28,6 +28,11 @@ let trace = pronoun;
 
 let everyone: a -> (e -> t) -> t = g p => for all (x in e) p(x); 
 
+anchor(
+  "Chapter 7: Quantification and Grammar",
+  "### Chapter 7: Quantification and Grammar"
+);
+
 markdown "Here is a quick illustration of quantification, with binding
 via an assignment function. First define our composition rules.";
 
