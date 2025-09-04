@@ -6,6 +6,7 @@ anchor(
 );
 
 let mdNatKeyword = x => "<span class=#{quote("codefont keyword")}>#{x}</span>";
+let mdNatConstant = x => "<span class=#{quote("codefont constant")}>#{x}</span>";
 let mdNatCode = x => "<span class=#{quote("codefont")}>#{x}</span>";
 
 markdown "
@@ -251,12 +252,52 @@ markdown "
 
 <br>
 
-To define the node of a tree, use square brackets.
+To define a tree, use square brackets, and separate the nodes with spaces.
+
+<br>
+
+(Note that to visualize
+trees, we will typeset them in LaTeX, but because we rely on a remote server
+for the typesetting, this will often not be instantaneous.)
 ";
 
 codeblock "let x = [1 2 3];
 
 print x;";
+
+markdown "Specify the value of an interior node by affixing it to its leftmost bracket
+with a '#{mdNatCode(".")}'.";
+
+codeblock "let x = [.1 2 3];
+
+print x;";
+
+markdown "Arbitrary expressions can occur as the data for trees.";
+
+codeblock "let f = x => x + 1;
+
+print [.f(1) f(2) f(2)];";
+
+markdown "However, because we use whitespace to distinguish nodes, any expression that
+itself contains whitespace must be wrapped in parentheses.";
+
+codeblock "print [.(1 + 1) (1 + 2) (1 + 3)];";
+
+markdown "Access subtrees by index.";
+
+codeblock "let x = [.0 [.2 3 4] [.5 6 7]];
+
+print x;
+print x[0];
+print x[1];";
+
+markdown "Access tree data via the #{mdNatCode("tree.data")} property.";
+
+codeblock "let x = [.1 2 3];
+
+print x.data;
+print x[0].data;
+print x[1].data;";
 
 anchor(
   "control",
