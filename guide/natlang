@@ -160,7 +160,7 @@ markdown "
   
   <br>
 
-  The boolean literals are #{mdNatCode("true")} and #{mdNatCode("false")}.
+  The boolean literals are #{mdNatConstant("true")} and #{mdNatConstant("false")}.
 ";
 
 anchor(
