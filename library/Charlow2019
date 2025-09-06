@@ -2,15 +2,15 @@ use prelude
 use grammar, FunctionApplication, trace, a, e, t
   from Heim&Kratzer1998
 
-sym Davidoff, James;
+sym David, James;
 
-let Human = {Davidoff, James};
+let Human = {David, James};
 
 let eta: (a -> u) -> a -> {u} = e g => ({e(g)});
 let who: a -> (e -> {t}) -> {t} = g f => ({y | x in Human, y in f(x)});
 let did: a -> u -> u = g x => x;
 
-let Meet = {(Davidoff, James), (James, Davidoff)};
+let Meet = {(David, James), (James, David)};
 let meet: a -> e -> e -> t = g x y => (x,y) in Meet;
 let J = (g: a) => James;
 
@@ -25,7 +25,7 @@ grammar.addRule(PredicateAbstraction');
 
 ex [who [1 [did [.eta J [meet trace(1)]]]]];
 
-let Linguist = {Davidoff};
+let Linguist = {David};
 let a-ling: a -> {e} = g => ({x | x in Linguist});
 
 let bind
