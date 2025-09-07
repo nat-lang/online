@@ -83,3 +83,7 @@ class Lattice {
   top() => this.X.find(x => this.X.all(x' => this.meet(x, x') == x'));
   bottom() => this.X.find(x => this.X.all(x' => this.join(x, x') == x'));
 }
+
+class Statespace extends Lattice {
+
+}
