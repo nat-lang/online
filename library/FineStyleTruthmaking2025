@@ -84,6 +84,10 @@ class Lattice {
   bottom() => this.X.find(x => this.X.all(x' => this.join(x, x') == x'));
 }
 
-class Statespace extends Lattice {
+class Statespace extends Lattice {}
 
+class ModalStatespace extends Statespace {
+  init(X: Set) => {
+  
+  }
 }
