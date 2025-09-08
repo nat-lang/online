@@ -341,4 +341,11 @@ an imperative context.";
 
 markdown "
 #### Loops
-";
+<br>
+
+To iterate over elements of an iterable object #{mdNatCode("y")}, use a
+#{mdNatKeyword("for ")} #{mdNatCode("(x")} #{mdNatKeyword(" in ")} #{mdNatCode("y)")} phrase.
+This will bind #{mdNatCode("x")} to each element, successively, in the context
+of the following block of code.";
+
+codeblock "for (x in [1,2,3]) print x;";
