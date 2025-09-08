@@ -334,10 +334,9 @@ f(0);
 f(1);
 f(2);
 f(3);
-f(4);
-";
+f(4);";
 
-markdown "Note that conditionals are *statements*, which means that they can only occur in
+markdown "Note that conditionals are *statements*, so they can only occur in
 an imperative context.";
 
 markdown "
