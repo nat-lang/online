@@ -337,6 +337,9 @@ f(3);
 f(4);
 ";
 
+markdown "Note that conditionals are *statements*, which means that they can only occur in
+an imperative context.";
+
 markdown "
 #### Loops
 
