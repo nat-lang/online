@@ -53,28 +53,23 @@ class Poset {
     Y => this.X.some(x => this.isLeastUpperBound(x, Y))
           && this.X.some(x => this.isGreatestLowerBound(x, Y))
   );
-
-  asLattice() => {
-    if (!this.isLattice())
-      throw Error("Not a lattice.");
-    return Lattice(
-      this.X,
-      (x,y) => this.X.find(z => this.isLeastUpperBound(z, {x,y})),
-      (x,y) => this.X.find(z => this.isGreatestLowerBound(z, {x,y}))
-    );
-  }
 }
 
-class Lattice {
-  init(X: Set, join, meet) => {
+class Lattice extends Poset {
+  init(X: Set, rel) => {
     this.X = X;
-    this.join = join;
-    this.meet = meet;
+    this.rel = rel;
+  
+    if (!this.isLattice())
+      throw Error("Not a lattice.");
   }
 
   isComplete() => this.X.powerset().all(
     Y => this.sum(Y) in this.X
   );
+
+  join(x,y) => this.X.find(z => this.isLeastUpperBound(z, {x,y}));
+  meet(x,y) => this.X.find(z => this.isGreatestLowerBound(z, {x,y}));
 
   sum(Y: Set) => this.X.reduce(
     (x, y) => this.join(x, y) , this.X[0]
