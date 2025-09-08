@@ -324,8 +324,8 @@ markdown "Include any number of #{mdNatKeyword("if else")} clauses, and specify 
 do if no condition holds with a final #{mdNatKeyword("else")} clause.";
 
 codeblock "let f = x => {
-  if (x == 0) print 1;
-  else if (x == 1) print 2;
+  if (x == 0) print 0;
+  else if (x == 1) print 1;
   else if (x == 2) print 2;
   else print 3;
 };
@@ -334,6 +334,7 @@ f(0);
 f(1);
 f(2);
 f(3);
+f(4);
 ";
 
 markdown "
