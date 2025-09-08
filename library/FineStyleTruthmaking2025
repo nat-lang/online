@@ -82,7 +82,8 @@ class Lattice extends Poset {
 class Statespace extends Lattice {}
 
 class ModalStatespace extends Statespace {
-  init(X: Set) => {
-  
+  init(X: Set, X^: Set, rel) => {
+    super.init(X, rel);
+    this.X^ = X^;
   }
 }
