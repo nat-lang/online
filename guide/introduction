@@ -4,15 +4,10 @@ markdown "
 ### Welcome
 <br>
 
-natlang.online is an environment for building, evaluating, and sharing semantic grammars.
-It's powered by the formal language nat, which makes it easy to express ideas
-from the linguistic and philosophical literature on semantics in an evaluable format.
-
-<br>
-
-If you have a background in formal semantics, you should be able to jump right in: pick a paper
-in the library that you're familiar with and experiment with it. The formalism should match
-the paper closely enough to recognize.
+natlang.online is an environment for building, evaluating, and sharing models
+of natural language semantics. It's powered by nat, a programming language designed
+to express ideas from the linguistic and philosophical literature on semantics in an
+evaluable format.
 
 <br>
 
