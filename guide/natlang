@@ -385,11 +385,13 @@ codeblock "print for some (x in [1,2,3]) {
 
 markdown "It's possible to create a new quantifier by defining a function from restrictions
 and predicates into booleans, wrapping this function in a #{mdNatCode("Quantifier")} object,
-and assigning it to the interpreter's global #{mdNatCode("Quantifiers")} table.";
+and assigning it to the interpreter's global #{mdNatCode("Quantification")} table. The first
+and second arguments to the #{mdNatCode("Quantifier")} constructor are unicode and LaTeX strings,
+for representing the quantifier, and the final argument is the function.";
 
 codeblock "let many = (r, b) => len([x | x in r, b(x)]) > len(r) / 2;
 
-Quantifiers.many = Quantifier(#{quote("many")}, #{quote(">50\%")}, many);";
+Quantification.many = Quantifier(#{quote("many")}, #{quote(">50\%")}, many);
 
-markdown "The first and second arguments to the #{mdNatCode("Quantifier")} constructor are
-unicode and LaTeX strings for representing the quantifier.";
+print for many (x in [1,2,3]) x < 2;
+print for many (x in [1,2,3]) x <= 2;";
