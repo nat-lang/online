@@ -361,4 +361,12 @@ after #{mdNatKeyword("for")} for specifying the type of quantifier.";
 
 codeblock "for all (x in [1,2,3]) x < 4;";
 
-markdown "Quantification is not ";
+markdown "Quantified statements are also expressions that reduce to #{mdNatKeyword("true")}
+or #{mdNatKeyword("false")}. The quantifiers that nat defines for you, alongside #{mdNatCode("all")},
+are #{mdNatCode("some")} and #{mdNatCode("no")}.";
+
+codeblock "print for all (x in [1,2,3]) x < 4;
+print for some (x in [1,2,3]) x < 4;
+print for no (x in [1,2,3]) x < 4;";
+
+markdown "It's possible to define your ";
