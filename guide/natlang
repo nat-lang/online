@@ -355,3 +355,10 @@ anchor(
   "quantifiers",
   "### Quantifiers"
 );
+
+markdown "The syntax for quantification is similar to that for loops, with an extra slot
+after #{mdNatKeyword("for")} for specifying the type of quantifier.";
+
+codeblock "for all (x in [1,2,3]) x < 4;";
+
+markdown "Quantification is not ";
