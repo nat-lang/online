@@ -388,12 +388,12 @@ and assigning it to the interpreter's global #{mdNatCode("Quantification")} tabl
 and second arguments to the #{mdNatCode("Quantifier")} constructor are unicode and LaTeX strings
 for representing the quantifier, and the final argument is the function.";
 
-codeblock "let many = (r, p) => len([x | x in r, p(x)]) > len(r) / 2;
+codeblock "let most = (r, p) => len([x | x in r, p(x)]) > len(r) / 2;
 
-Quantification.many = Quantifier(#{quote("many")}, #{quote(">50\%")}, many);
+Quantification.most = Quantifier(#{quote("most")}, #{quote(">50\%")}, most);
 
-print for many (x in [1,2,3]) x < 2;
-print for many (x in [1,2,3]) x <= 2;";
+print for most (x in [1,2,3]) x < 2;
+print for most (x in [1,2,3]) x <= 2;";
 
 anchor(
   "types",
