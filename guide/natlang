@@ -350,7 +350,6 @@ of the following block of code.";
 
 codeblock "for (x in [1,2,3]) print x;";
 
-
 anchor(
   "quantifiers",
   "### Quantifiers"
@@ -362,7 +361,7 @@ must be a boolean value.";
 
 codeblock "for all (x in [1,2,3]) x < 4;";
 
-markdown "Quantified statements are also expressions that reduce to #{mdNatKeyword("true")}
+markdown "Quantified statements are themselves expressions that reduce to #{mdNatKeyword("true")}
 or #{mdNatKeyword("false")}. The quantifiers that nat defines for you, alongside #{mdNatCode("all")},
 are #{mdNatCode("some")} and #{mdNatCode("no")}.";
 
@@ -395,3 +394,8 @@ Quantification.many = Quantifier(#{quote("many")}, #{quote(">50\%")}, many);
 
 print for many (x in [1,2,3]) x < 2;
 print for many (x in [1,2,3]) x <= 2;";
+
+anchor(
+  "types",
+  "### Types"
+);
