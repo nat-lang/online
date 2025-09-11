@@ -349,3 +349,9 @@ This will bind #{mdNatCode("x")} to each element, successively, in the context
 of the following block of code.";
 
 codeblock "for (x in [1,2,3]) print x;";
+
+
+anchor(
+  "quantifiers",
+  "### Quantifiers"
+);
