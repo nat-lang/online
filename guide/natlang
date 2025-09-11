@@ -369,4 +369,16 @@ codeblock "print for all (x in [1,2,3]) x < 4;
 print for some (x in [1,2,3]) x < 4;
 print for no (x in [1,2,3]) x < 4;";
 
-markdown "It's possible to define your ";
+markdown "Underneath, the compiler translates the body of the quantifier into a function
+of its free variable, and then feeds this function and the iterable in the restriction
+to the relevant quantificational function.
+
+The body can be a block as well as an expression, in which case it's required to return
+a boolean value.";
+
+codeblock "print for some (x in [1,2,3]) {
+  print x;
+  return x < 4;
+};";
+
+codeblock "let many = (r, b) => len([x | x in r, b(x)]) > len(r) / 2)";
