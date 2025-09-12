@@ -399,3 +399,29 @@ anchor(
   "types",
   "### Types"
 );
+
+markdown "Nat is dynamically typed, which means variables can hold values of arbitrary type.
+It's up to the user to make sure that operations are performed on the types that they expect,
+and it's up to the interpreter to figure out the type of a value, at runtime, when it executes
+those operations. 
+
+<br>
+
+Beyond this basic type regime, nat has two features that make it possible to define
+more sophisticated type systems. It supports annotation of function parameters and variable declarations,
+and it gives you access to compiled syntax trees.
+
+<br>
+
+Together, these features are all that's necessary to build a fully static 
+";
+
+codeblock "let f: bool -> bool = x => !x;
+
+print type(f).str();
+";
+
+anchor(
+  "ast",
+  "### Abstract Syntax Tree"
+);
