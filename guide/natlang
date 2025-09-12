@@ -418,7 +418,7 @@ Nat's core library contains implementations of simple, subtype, adhoc, polymorph
 type systems.
 ";
 
-codeblock "let f: bool -> bool = x => !x;
+codeblock "let f = (x: bool) => !x;
 
 print type(f).str();
 ";
