@@ -415,7 +415,9 @@ to build a static type checker for fragments of nat.
 <br>
 
 Nat's core library contains implementations of simple, subtype, adhoc, polymorphic, and extensional
-type systems.
+type systems, each built on top of the previous. The default #{mdNatCode("type")} object is
+an entrypoint to the extensional type system. Calling #{mdNatCode("type")} with a function as its
+only argument is shorthand for performing inference, and returns a type.
 ";
 
 codeblock "let f = (x: bool) => !x;
