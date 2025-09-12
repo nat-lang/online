@@ -349,3 +349,81 @@ This will bind #{mdNatCode("x")} to each element, successively, in the context
 of the following block of code.";
 
 codeblock "for (x in [1,2,3]) print x;";
+
+anchor(
+  "quantifiers",
+  "### Quantifiers"
+);
+
+markdown "The syntax for quantification is similar to that for loops, with an extra slot
+after #{mdNatKeyword("for")} for specifying the type of quantifier. Here the scope of the quantifier
+must be a boolean value.";
+
+codeblock "for all (x in [1,2,3]) x < 4;";
+
+markdown "Quantified statements are themselves expressions that reduce to #{mdNatKeyword("true")}
+or #{mdNatKeyword("false")}. The quantifiers that nat defines for you, alongside #{mdNatCode("all")},
+are #{mdNatCode("some")} and #{mdNatCode("no")}.";
+
+codeblock "print for all (x in [1,2,3]) x < 4;
+print for some (x in [1,2,3]) x < 4;
+print for no (x in [1,2,3]) x < 4;";
+
+markdown "Underneath, the compiler translates the body of the quantifier into a function
+of its free variable, and then feeds this predicate and the iterable in the restriction
+to the relevant quantificational function.
+
+<br>
+
+The body can be a block as well as an expression, as long as it returns a boolean value.";
+
+codeblock "print for some (x in [1,2,3]) {
+  print x;
+  return x < 4;
+};";
+
+markdown "It's possible to create a new quantifier by defining a function from restrictions
+and predicates into booleans, wrapping this function in a #{mdNatCode("Quantifier")} object,
+and assigning it to the interpreter's global #{mdNatCode("Quantification")} table. The first
+and second arguments to the #{mdNatCode("Quantifier")} constructor are unicode and LaTeX strings
+for representing the quantifier, and the final argument is the function.";
+
+codeblock "let most = (r, p) => len([x | x in r, p(x)]) > len(r) / 2;
+
+Quantification.most = Quantifier(#{quote("most")}, #{quote(">50\%")}, most);
+
+print for most (x in [1,2,3]) x < 2;
+print for most (x in [1,2,3]) x <= 2;";
+
+anchor(
+  "types",
+  "### Types"
+);
+
+markdown "Nat is dynamically typed, which means variables can hold values of arbitrary type.
+It's up to the user to make sure that operations are performed on the types that they expect,
+and it's up to the interpreter to figure out the type of a value when it executes
+those operations at runtime. 
+
+<br>
+
+Beyond this basic type regime, nat has two features that make it possible to define
+more sophisticated type systems. It supports annotation of function parameters and variable declarations,
+and it gives you access to compiled syntax trees. Together, these features are all that's necessary
+to build a static type checker for fragments of nat.
+
+<br>
+
+Nat's core library contains implementations of simple, subtype, adhoc, polymorphic, and extensional
+type systems.
+";
+
+codeblock "let f: bool -> bool = x => !x;
+
+print type(f).str();
+";
+
+anchor(
+  "ast",
+  "### Abstract Syntax Tree"
+);
