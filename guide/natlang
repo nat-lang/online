@@ -11,8 +11,8 @@ let mdNatCode = x => "<span class=#{quote("codefont")}>#{x}</span>";
 
 markdown "
   Nat is a simple language, consisting of functions and the things
-  that functions act on. To define a function, introduce a variable and then
-  do something with it after a fat arrow.
+  that functions act on. To define a function, declare a variable and then
+  do something with it after an arrow.
 ";
 
 codeblock "let f = x => x + 1;";
