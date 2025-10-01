@@ -192,7 +192,7 @@ markdown "Some functions have terser symbolic aliases that can be used as infixe
 codeblock "let y = {1, 2, 3} & {3, 4, 5};
 print x == y;";
 
-markdown "Set objects also have unary properties.";
+markdown "Set objects have properties.";
 
 codeblock "print {1, 2, 3}.powerset();";
 
