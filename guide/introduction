@@ -1,9 +1,8 @@
 use ../online/common
 
-markdown "
-### Welcome
-<br>
+anchor("welcome", "### Welcome");
 
+markdown "
 natlang.online is an environment for building, evaluating, and sharing models
 of natural language semantics. It's powered by nat, a programming language designed
 to express ideas from the linguistic and philosophical literature on semantics in an
@@ -11,5 +10,15 @@ evaluable format.
 
 <br>
 
-To learn more about nat, consult the [documentation](/guide/natlang).
+To learn more about nat, consult the [language manual](/guide/natlang).
+";
+
+anchor("motivation", "### Motivation");
+
+markdown "
+Semanticists build formal models of meaning using tools from logic and type theory, but traditionally rely on paper or informal notation. Nat makes these models executable, allowing:
+
+* Rigorous checking of analyses.
+* Easier sharing and reproducibility.
+* Integration of complex grammars across projects.
 ";

@@ -11,8 +11,8 @@ let mdNatCode = x => "<span class=#{quote("codefont")}>#{x}</span>";
 
 markdown "
   Nat is a simple language, consisting of functions and the things
-  that functions act on. To define a function, introduce a variable and then
-  do something with it after a fat arrow.
+  that functions act on. To define a function, declare a variable and then
+  do something with it after an arrow.
 ";
 
 codeblock "let f = x => x + 1;";
@@ -192,7 +192,7 @@ markdown "Some functions have terser symbolic aliases that can be used as infixe
 codeblock "let y = {1, 2, 3} & {3, 4, 5};
 print x == y;";
 
-markdown "Set objects also have unary properties.";
+markdown "Set objects have properties.";
 
 codeblock "print {1, 2, 3}.powerset();";
 
@@ -415,10 +415,12 @@ to build a static type checker for fragments of nat.
 <br>
 
 Nat's core library contains implementations of simple, subtype, adhoc, polymorphic, and extensional
-type systems.
+type systems, each built on top of the previous. The default #{mdNatCode("type")} object is
+an entrypoint to the extensional type system. Calling #{mdNatCode("type")} with a function as its
+only argument is shorthand for performing inference, and returns a type.
 ";
 
-codeblock "let f: bool -> bool = x => !x;
+codeblock "let f = (x: bool) => !x;
 
 print type(f).str();
 ";
