@@ -276,7 +276,7 @@ markdown "Arbitrary expressions can occur as the data for trees.";
 
 codeblock "let f = x => x + 1;
 
-print [.f(1) f(2) f(2)];";
+print [.f(1) f(2) f(3)];";
 
 markdown "However, because we use whitespace to distinguish nodes, any expression that
 itself contains whitespace must be wrapped in parentheses.";
