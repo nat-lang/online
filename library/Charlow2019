@@ -2,8 +2,8 @@ use prelude
 use grammar, FunctionApplication, trace, a, t
   from Heim&Kratzer1998
 
-dom e = {David, James};
 sym David, James;
+dom e = {David, James};
 let Human = {David, James};
 
 let eta: (a -> u) -> a -> {u} = e g => ({e(g)});
