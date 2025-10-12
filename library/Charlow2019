@@ -2,7 +2,7 @@ use prelude
 use grammar, FunctionApplication, trace, a, t
   from Heim&Kratzer1998
 
-dom e = {David, James}
+dom e = {David, James};
 sym David, James;
 let Human = {David, James};
 
