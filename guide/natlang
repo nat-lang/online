@@ -209,8 +209,8 @@ also refer to it within other generators to its right.";
 
 codeblock "print {b | a in {{1, 2}, {3, 4}}, b in a, b not in {2, 3}};";
 
-markdown "While they're not the same as functions, sets can be applied to arguments,
-so that in certain situations they're indistinguishable from their characteristic functions.";
+markdown "Sets can be applied to arguments, so that in certain situations they're indistinguishable from
+their characteristic functions.";
 
 codeblock "let x = {1, 2, 3};
 print x(1);
