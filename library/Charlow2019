@@ -51,7 +51,7 @@ let Linguist = {David};
 let a-ling: a -> {e} = g => ({x | x in Linguist});
 
 let bind
-  : (a -> {u}) -> (u -> a -> {w}) -> a -> {w}
-  = m f g => ({y | z in m(g), y in f(z)(g)});
+  : (a -> {u}) -> a -> (u -> {w}) -> {w}
+  = m g f => ({y | z in m(g), y in f(z)});
 
 ex [[.bind a-ling] [1 [.eta J [meet trace(1)]]]];
