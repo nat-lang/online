@@ -1,9 +1,35 @@
-use prelude
-use grammar, FunctionApplication, trace, a, t
-  from Heim&Kratzer1998
+use ../online/common
+
+dom t = {true, false};
+
+// Let the compiler know that the native
+// boolean type [bool] now has an extension.
+bool = t;
 
 sym David, James;
-dom e = {David,James};
+dom e = {David, James};
+
+// Define the [grammar] object, which will keep
+// track of our composition rules and lexical entries.
+let grammar = CompositionSystem();
+
+let a = num -> e;
+
+let AssSensitiveFunctionApplication
+  = (a: a -> x -> y, b: a -> x) => (g => a(g)(b(g)))
+  | (a: a -> x, b: a -> x -> y) => (g => b(g)(a(g)));
+
+// for charlow's basic derivations to work we need
+// a definition of predicate abstraction that swaps
+// x and g.
+let PredicateAbstraction
+  = (n: num, f: a -> u) => (g x => f(g[n] = x))
+  | (f: a -> u, n: num) => (g x => f(g[n] = x));
+
+grammar.addRule(PredicateAbstraction);
+grammar.addRule(AssSensitiveFunctionApplication);
+
+let a = num -> e;
 let Human = {David, James};
 
 let eta: (a -> u) -> a -> {u} = e g => ({e(g)});
@@ -14,14 +40,10 @@ let Meet = {(David, James), (James, David)};
 let meet: a -> e -> e -> t = g x y => (x,y) in Meet;
 let J = (g: a) => James;
 
-// for charlow's basic derivations to work we need
-// a definition of predicate abstraction that swaps
-// x and g.
-let PredicateAbstraction'
-  = (n: num, f: a -> u) => (x g => f(g[n] = x))
-  | (f: a -> u, n: num) => (x g => f(g[n] = x));
+let pronoun: num -> (num -> e) -> e = n g => g[n];
+let trace = pronoun;
 
-grammar.addRule(PredicateAbstraction');
+let prefix ex = output.push . StandaloneTexDoc . (x => x.tex()) . grammar.evaluate;
 
 ex [who [1 [did [.eta J [meet trace(1)]]]]];
 
@@ -29,7 +51,7 @@ let Linguist = {David};
 let a-ling: a -> {e} = g => ({x | x in Linguist});
 
 let bind
-  : (a -> {u}) -> (u -> a -> {w}) -> a -> {w}
-  = m f g => ({y | z in m(g), y in f(z)(g)});
+  : (a -> {u}) -> a -> (u -> {w}) -> {w}
+  = m g f => ({y | z in m(g), y in f(z)});
 
 ex [[.bind a-ling] [1 [.eta J [meet trace(1)]]]];
