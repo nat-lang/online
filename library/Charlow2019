@@ -45,6 +45,9 @@ let trace = pronoun;
 
 let prefix ex = output.push . StandaloneTexDoc . (x => x.tex()) . grammar.evaluate;
 
+markdown "Here are basic illustrations of the unit and bind operations selectively
+introducing indeterminacy into derivations.";
+
 ex [who [1 [did [.eta J [meet trace(1)]]]]];
 
 let Linguist = {David};
