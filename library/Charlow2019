@@ -19,9 +19,6 @@ let AssSensitiveFunctionApplication
   = (a: a -> x -> y, b: a -> x) => (g => a(g)(b(g)))
   | (a: a -> x, b: a -> x -> y) => (g => b(g)(a(g)));
 
-// for charlow's basic derivations to work we need
-// a definition of predicate abstraction that swaps
-// x and g.
 let PredicateAbstraction
   = (n: num, f: a -> u) => (g x => f(g[n] = x))
   | (f: a -> u, n: num) => (g x => f(g[n] = x));
