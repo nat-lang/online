@@ -424,8 +424,3 @@ codeblock "let f = (x: bool) => !x;
 
 print type(f).str();
 ";
-
-anchor(
-  "ast",
-  "### Abstract Syntax Tree"
-);
