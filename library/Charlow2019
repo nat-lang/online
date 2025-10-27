@@ -45,6 +45,8 @@ let prefix ex = output.push . StandaloneTexDoc . (x => x.tex()) . grammar.evalua
 markdown "Here are basic illustrations of the unit and bind operations selectively
 introducing indeterminacy into derivations.";
 
+markdown "(1) Who did James meet?";
+
 ex [who [1 [did [.eta J [meet trace(1)]]]]];
 
 let Linguist = {David};
@@ -54,4 +56,5 @@ let bind
   : (a -> {u}) -> a -> (u -> {w}) -> {w}
   = m g f => ({y | z in m(g), y in f(z)});
 
+markdown "(2) James met a linguist.";
 ex [[.bind a-ling] [1 [.eta J [meet trace(1)]]]];
