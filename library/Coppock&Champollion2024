@@ -132,19 +132,24 @@ grammar.addRules(QuantificationalObject);
 // examples.
 
 ex [Agnetha smiled];
+ex [Bjorn [is' kind]];
+ex [everybody snores];
+ex [somebody snores];
+ex [everybody [loves somebody]];
+
 ex [Agnetha [loves Bjorn]];
 ex [Benny [[introduced Agnetha] [to Bjorn]]];
 ex [Carlos [self1 shaves]];
 ex [Carlos [[self2 introduced] Paco]];
 ex [Carlos [[self3 introduced] Paco]];
-ex [Bjorn [is' kind]];
+
 ex [Frida [is' [with Benny]]];
 ex [Benny [is' [proud [of Frida]]]];
 ex [Agnetha [is' [a singer]]];
 ex [Frida [is' [a [norwegian millionaire]]]];
 ex [[every singer] smiled];
 ex [[a singer] smiled];
-ex [everybody snores];
+
 ex [somebody [hugged Ariel]];
 ex [everybody [is' [afraid [of Ariel]]]];
 ex [nobody [likes Ursula]];
